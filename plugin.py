@@ -35,7 +35,7 @@ blueprint = Blueprint(package_name, package_name, url_prefix='/%s' %  package_na
 menu = {
     'main' : [package_name, 'aria2'],
     'sub' : [
-        ['setting', '설정'], ['gui', 'GUI'], ['aria_log', 'aria2 로그'], ['log', '로그'], 
+        ['setting', '설정'], ['gui', 'GUI'], ['log', '로그'], 
     ],
     'category' : 'tool'
 }

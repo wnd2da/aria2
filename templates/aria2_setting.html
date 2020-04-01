@@ -15,7 +15,7 @@
   {{ macros.setting_input_text('download_path', '기본 다운로드 경로', value=arg['download_path'], desc=['다운로드 경로입니다.']) }}
   {{ macros.setting_input_int('rpc_port', 'RPC Port', value=arg['rpc_port'], desc=['RPC Port. 기본값 6800']) }}
   <!-- {{ macros.setting_input_text('rpc_token', 'RPC Token', value=arg['rpc_token'], col='3', desc=['RPC Token. 빈값인 경우 인증 사용 안함.']) }} -->
-  {{ macros.setting_input_textarea('option', '사용자 추가 옵션', value=arg['option'], row='6') }}
+  {{ macros.setting_input_textarea('option', '사용자 추가 옵션', value=arg['option'], row='10', desc=['--bt-tracker --seed-time']) }}
   </form>
 </div><!--전체-->
 
