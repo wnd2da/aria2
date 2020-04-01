@@ -26,7 +26,7 @@ class Logic(object):
         'auto_start' : 'False',
         'rpc_port' : '6800', 
         'rpc_token' : '',
-        'option' : ''
+        'option' : '--bt-tracker=udp://93.158.213.92:1337/announce,udp://62.210.97.59:1337/announce,udp://151.80.120.115:2710/announce,udp://208.83.20.20:6969/announce,udp://185.181.60.67:80/announce,udp://194.182.165.153:6969/announce,udp://5.206.3.65:6969/announce,udp://37.235.174.46:2710/announce,udp://89.234.156.205:451/announce,udp://92.223.105.178:6969/announce,udp://207.241.231.226:6969/announce,udp://207.241.226.111:6969/announce,udp://51.15.40.114:80/announce,udp://91.149.192.31:6969/announce\n--seed-time=0'
     }
 
     @staticmethod
