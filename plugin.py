@@ -132,7 +132,7 @@ def ajax(sub):
                 if LogicNormal.current_process is None:
                     LogicNormal.run()
                     ret = 'execute'
-                else:
+                else: 
                     ret = 'already_execute'
             else:
                 if LogicNormal.current_process is None:
