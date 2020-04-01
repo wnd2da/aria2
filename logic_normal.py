@@ -136,7 +136,7 @@ class LogicNormal(object):
                 ret = os.path.join(bin_path, 'Windows', 'aria2c.exe')
             elif CommonUtil.is_mac():
                 ret = os.path.join(bin_path, 'Darwin', 'aria2c')
-            elif CommonUtil.is_linux():
+            elif CommonUtil.is_docker() or CommonUtil.is_linux():
                 command = ['which', 'aria2c']
                 log = Util.execute_command(command)
                 if log:
