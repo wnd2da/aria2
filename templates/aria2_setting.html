@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+  {{ macros.m_button_group([['global_setting_save_btn', '설정 저장']])}}
+  {{ macros.m_row_start('5') }}
+  {{ macros.m_row_end() }}
+
+  {{ macros.setting_input_text_and_buttons('binary_path', 'aria2 경로', [['version_btn', '버전확인']], value=arg['binary_path']) }}
+  {{ macros.setting_button([['install_btn', '설치'], ['uninstall_btn', '삭제']], desc=['윈도우와 맥, 안드로이드 상 Termux 환경은 실행파일이 포함되어져 있습니다.', '도커 등 리눅스 환경은 설치가 필요합니다.']) }}
+  {{ macros.setting_checkbox('status', '실행 상태', value=arg['status'], desc=['현재 실행 상태를 나타냅니다. On으로 변경시 바로 실행합니다.','On : 실행중']) }}
+  {{ macros.m_hr() }}
+  <form id='setting' name='setting'>
+  {{ macros.setting_checkbox('auto_start', '시작시 자동실행', value=arg['auto_start'], desc=['On : 시작시 자동으로 실행합니다.']) }}
+  {{ macros.setting_input_text('download_path', '기본 다운로드 경로', value=arg['download_path'], desc=['다운로드 경로입니다.']) }}
+  {{ macros.setting_input_int('rpc_port', 'RPC Port', value=arg['rpc_port'], desc=['RPC Port. 기본값 6800']) }}
+  <!-- {{ macros.setting_input_text('rpc_token', 'RPC Token', value=arg['rpc_token'], col='3', desc=['RPC Token. 빈값인 경우 인증 사용 안함.']) }} -->
+  {{ macros.setting_input_textarea('option', '사용자 추가 옵션', value=arg['option'], row='6') }}
+  </form>
+</div><!--전체-->
+
+<script type="text/javascript">
+var package_name = "{{arg['package_name'] }}";
+var current_data = null;
+
+$(document).ready(function(){
+});
+
+$("body").on('click', '#version_btn', function(e){
+  e.preventDefault();
+  binary_path = document.getElementById("binary_path").value;
+  $.ajax({
+    url: '/'+package_name+'/ajax/version',
+    type: "POST", 
+    cache: false,
+    data: {binary_path:binary_path},
+    dataType: "json",
+    success: function (data) {
+      if (data) {
+
+      } else {
+        $.notify('<strong>실행할 수 없습니다. 설치 & 경로 확인 필요</strong>', {
+          type: 'warning'
+        });
+      }
+    }
+  });
+});
+
+$("body").on('click', '#install_btn', function(e){
+  e.preventDefault();
+  $.ajax({
+    url: '/'+package_name+'/ajax/install',
+    type: "POST", 
+    cache: false,
+    data: {},
+    dataType: "json",
+    success: function (data) {}
+  });
+});
+
+$("body").on('click', '#uninstall_btn', function(e){
+  e.preventDefault();
+  $.ajax({
+    url: '/'+package_name+'/ajax/uninstall',
+    type: "POST", 
+    cache: false,
+    data: {},
+    dataType: "json",
+    success: function (data) {}
+  });
+});
+
+
+$('#status').change(function() {
+  var ret = $(this).prop('checked');
+  $.ajax({
+    url: '/'+package_name+'/ajax/status',
+    type: "POST", 
+    cache: false,
+    data: {todo : ret},
+    dataType: "json",
+    success: function (list) {
+    }
+  });
+});
+
+
+</script>    
+{% endblock %}
