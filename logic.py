@@ -19,7 +19,7 @@ from .model import ModelSetting
 from .logic_normal import LogicNormal
 #########################################################
 
-class Logic(object):
+class Logic(object): 
     db_default = {
         'db_version' : '1',
         'download_path' : os.path.join(path_data, package_name),
