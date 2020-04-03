@@ -5,6 +5,7 @@ import os
 import traceback
 import threading
 import urllib2, json
+import requests
 
 # third-party
 from flask import Blueprint, request, Response, send_file, render_template, redirect, jsonify, session, send_from_directory 
@@ -74,7 +75,10 @@ def jsonrpc():
         logger.debug(jsonreq)
         c = urllib2.urlopen('http://127.0.0.1:%s/jsonrpc' % ModelSetting.get('rpc_port'), jsonreq)
         data = json.loads(c.read())
+        #res = requests.post('http://127.0.0.1:%s/jsonrpc' % ModelSetting.get('rpc_port'), data=jsonreq, headers={'Content-Type': 'application/json; charset=utf-8'})
+        #data = res.json()
         return jsonify(data)
+
     except Exception as e: 
         logger.error('Exception:%s', e)
         logger.error(traceback.format_exc())  
