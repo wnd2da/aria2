@@ -71,6 +71,7 @@ def home():
 def jsonrpc():
     try:
         jsonreq = json.dumps(request.json)
+        logger.debug(jsonreq)
         c = urllib2.urlopen('http://127.0.0.1:%s/jsonrpc' % ModelSetting.get('rpc_port'), jsonreq)
         data = json.loads(c.read())
         return jsonify(data)
