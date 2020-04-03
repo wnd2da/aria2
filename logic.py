@@ -44,7 +44,8 @@ class Logic(object):
     @staticmethod
     def plugin_load():
         try:
-            logger.debug('%s plugin_load', package_name)            
+            logger.debug('%s plugin_load', package_name)   
+            import platform         
             if platform.system() != 'Windows':
                 custom = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bin')    
                 os.system("chmod 777 -R %s" % custom)
