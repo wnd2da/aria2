@@ -129,8 +129,8 @@ class LogicNormal(object):
         try:
             bin_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bin')
             ret = ''
-            
-            if CommonUtil.is_termux():
+            import platform
+            if CommonUtil.is_termux() and platform.platform().find('arch') != -1:
                 ret = os.path.join(bin_path, 'termux', 'aria2c')
             elif CommonUtil.is_windows():
                 ret = os.path.join(bin_path, 'Windows', 'aria2c.exe')
