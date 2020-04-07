@@ -31,6 +31,10 @@ class LogicNormal(object):
         try:
             LogicNormal.kill()
             binary_path = LogicNormal.get_binary()
+            import platform         
+            if platform.system() != 'Windows':
+                os.system("chmod 777 -R %s" % binary_path)
+
             #command = [binary_path, '--enable-rpc', '--rpc-listen-all=true', '--rpc-allow-origin-all', '-d', ModelSetting.get('download_path'), '-l', os.path.join(path_data, 'log', 'aria2c.log')]
             command = [binary_path, '--enable-rpc', '--rpc-listen-all=true', '--rpc-allow-origin-all', '-d', ModelSetting.get('download_path')]
             if ModelSetting.get('rpc_port') != '6800':
