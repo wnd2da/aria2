@@ -172,4 +172,3 @@ def ajax(sub):
         logger.error('Exception:%s', e)
         logger.error(traceback.format_exc())  
         return jsonify('fail')   
-
