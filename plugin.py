@@ -20,12 +20,10 @@ from framework.util import Util
 # 로그
 package_name = __name__.split('.')[0]
 logger = get_logger(package_name)
-
 from .model import ModelSetting
 from .logic import Logic
 from .logic_normal import LogicNormal
 #########################################################
-
 
 #########################################################
 # 플러그인 공용                                       
@@ -172,3 +170,4 @@ def ajax(sub):
         logger.error('Exception:%s', e)
         logger.error(traceback.format_exc())  
         return jsonify('fail')   
+

@@ -11,12 +11,10 @@ import threading
 
 # third-party
 
-
 # sjva 공용
 from framework import app, db, scheduler, path_app_root, celery, path_data
 from framework.job import Job
 from framework.util import Util
-import framework.common.util as CommonUtil
 
 # 패키지
 from .plugin import logger, package_name
@@ -68,6 +66,7 @@ class LogicNormal(object):
     @staticmethod
     def install():
         try:
+            import framework.common.util as CommonUtil
             def func():
                 import system
                 LogicNormal.kill()
@@ -100,6 +99,7 @@ class LogicNormal(object):
     @staticmethod
     def uninstall():
         try:
+            import framework.common.util as CommonUtil
             def func():
                 import system
                 LogicNormal.kill()
@@ -131,6 +131,7 @@ class LogicNormal(object):
     @staticmethod
     def get_binary():
         try:
+            import framework.common.util as CommonUtil
             bin_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bin')
             ret = ''
             import platform
